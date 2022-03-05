@@ -1,0 +1,18 @@
+{
+  total: 3,
+  searchTerm: 'frases_de_teste',
+  phrases: [
+    {
+      author: 'Richard Bach',
+      text: 'Eis um teste para saber se você terminou sua missão na Terra: se você está vivo, não terminou.'
+    },
+    {
+      author: 'Paulo Coelho',
+      text: 'Os dois testes mais duros no caminho espiritual são a paciência para esperar o momento certo e a coragem de não nos decepcionar com o que encontramos.'
+    },
+    {
+      author: 'Denis Diderot',
+      text: 'Uma palavra grosseira, uma expressão bizarra, ensinou-me por vezes mais do que dez belas frases.'
+    }
+  ]
+}
