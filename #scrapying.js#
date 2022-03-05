@@ -24,4 +24,4 @@ rl.question("O que tu queres buscar?", async function (answer) {
     
   rl.close();
   });
- 
+    
