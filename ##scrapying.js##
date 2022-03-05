@@ -1,7 +1,0 @@
-const axios = require('axios').default;
-axios.get('https://www.pensador.com/amor/').then(res=>{
-    console.log(res.data); 
-}
-  m
-
-
