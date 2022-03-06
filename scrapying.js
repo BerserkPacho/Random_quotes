@@ -1,26 +1,51 @@
-const pensador = require('pensador-api');
-const readline = require("readline");
+#!/usr/bin/env node 
+import inquirer from 'inquirer'; 
+import pensador from 'pensador-api';
+import readline from 'readline';
+import chalk from 'chalk';
+import chalkAnimation from 'chalk-animation'; 
 
-async function  search(query){
-    const result = await pensador({term:query, max:3}) 
+// const readline = require("readline");
+// import chalk from 'chalk'/
+const sleep = (ms = 1000) => new Promise((r) => setTimeout(r,ms)); 
+
+async function welcome(){
+    const rainbowTitle = chalkAnimation.rainbow('Hello' ); 
+
+    await sleep();
+    rainbowTitle.stop()
     
-    
-    return result; 
+}  
+
+async function askSearch(){
+    const answers = await inquirer.prompt({
+	name: 'query',
+	type: 'input',
+	message: 'What do you want to search?', 
+	default(){
+	    return 'amor'; 
+	}, 
+    })
+    return  answers.query; 
     
 }
+async function search(query){
+    let  result =  await pensador({term:query, max:3});
+    return result;
+} 
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
 let result;
+async function main(){ 
 
-
-rl.question("O que tu queres buscar?", async function (answer) {
-    result = await search(answer)
+    await welcome()
+    let answer  = await askSearch();
     
-    Math.random(0,result["phrases"].length); 
-    console.log(result["phrases"][2]["text"]) 
     
-  rl.close();
-  });
+    result = await search(answer);
+    let random = Math.floor(Math.random(3));
+    console.log(random)
+    console.log(result["phrases"][random]["text"]);
+}
+main() 
+// let array =[]; 
+    
