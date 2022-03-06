@@ -1,7 +1,7 @@
 #!/usr/bin/env node 
 import inquirer from 'inquirer'; 
 import pensador from 'pensador-api';
-import readline from 'readline';
+
 import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation'; 
 
@@ -21,10 +21,8 @@ async function askSearch(){
     const answers = await inquirer.prompt({
 	name: 'query',
 	type: 'input',
-	message: 'What do you want to search?', 
-	default(){
-	    return 'amor'; 
-	}, 
+	message: 'O que quer procurar?', 
+	
     })
     return  answers.query; 
     
@@ -43,7 +41,7 @@ async function main(){
     
     result = await search(answer);
     let random = Math.floor(Math.random(3));
-    console.log(random)
+    
     console.log(result["phrases"][random]["text"]);
 }
 main() 
