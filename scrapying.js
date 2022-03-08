@@ -7,10 +7,10 @@ import chalkAnimation from 'chalk-animation';
 
 // const readline = require("readline");
 // import chalk from 'chalk'/
-const sleep = (ms = 1000) => new Promise((r) => setTimeout(r,ms)); 
+const sleep = (ms = 500) => new Promise((r) => setTimeout(r,ms)); 
 
 async function welcome(){
-    const rainbowTitle = chalkAnimation.rainbow('Hello' ); 
+    const rainbowTitle = chalkAnimation.rainbow('Hello!'); 
 
     await sleep();
     rainbowTitle.stop()
@@ -19,12 +19,13 @@ async function welcome(){
 
 async function askSearch(){
     const answers = await inquirer.prompt({
-	name: 'query',
-	type: 'input',
-	message: 'O que quer procurar?', 
+	name:'name',
+	prefix: '$', 
+	type: 'input',     
+	message:'Por favor, fala-me que tema de frase tu queres buscar:', 
 	
     })
-    return  answers.query; 
+    return  answers.name; 
     
 }
 async function search(query){
